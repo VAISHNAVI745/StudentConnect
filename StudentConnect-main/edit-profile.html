@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Connect - Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7bc1ed, #bbd1f8);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Back arrow button */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            text-decoration: none;
+            font-size: 24px;
+            color: #0c45f1;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0c45f1;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #0c45f1;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .custom-file-upload {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        input[type="file"] + label {
+            background: #010101;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="file"] + label:hover {
+            background: #1f6390;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(10, 7, 7);
+            text-align: center;
+            pointer-events: none; 
+        }
+
+        button {
+            background-color: #0c45f1;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color:  #2b80ff;
+        }
+
+        #message {
+            text-align: center;
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back arrow button -->
+        <a href="userviewprofile.html" class="back-button">&#8592;</a>
+        
+        <h1>Edit Profile</h1>
+        <form id="profile-form">
+            <fieldset>
+                <legend>Profile Picture</legend>
+                <label for="profile-pic" class="custom-file-upload">Upload Profile Picture:</label>
+                <input type="file" id="profile-pic" accept="image/*" onchange="previewImage(event)" />
+                <div class="image-container">
+                    <img id="profile-pic-preview" src="default-profile.jpg" />
+                    <div class="overlay-text" id="overlay-text">Profile Picture</div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <label for="user-type">Are you an Active Student or Alumni?</label>
+                <select id="user-type" required>
+                    <option value="">Select...</option>
+                    <option value="Active Student">Active Student</option>
+                    <option value="Alumni">Alumni</option>
+                </select>
+
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" required />
+
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" required />
+
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" />
+
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="">Select...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="bio">Bio:</label>
+                <textarea id="bio" rows="4"></textarea>
+            </fieldset>
+
+            <!-- Academic Details Section -->
+            <fieldset>
+                <legend>Academic Details</legend>
+
+                <h3>Graduation</h3>
+                <label for="graduation-college">College Name:</label>
+                <input type="text" id="graduation-college" placeholder="Enter your graduation college name" />
+
+                <label for="graduation-course">Course Name:</label>
+                <input type="text" id="graduation-course" placeholder="Enter your graduation course name" />
+
+                <label for="graduation-year">Graduation Year:</label>
+                <input type="text" id="graduation-year" placeholder="Enter your graduation year" />
+
+                <h3>Post-Graduation</h3>
+                <label for="post-graduation-college">College Name:</label>
+                <input type="text" id="post-graduation-college" placeholder="Enter your post-graduation college name" />
+
+                <label for="post-graduation-course">Course Name:</label>
+                <input type="text" id="post-graduation-course" placeholder="Enter your post-graduation course name" />
+
+                <h3>PhD</h3>
+                <label for="phd-college">College Name:</label>
+                <input type="text" id="phd-college" placeholder="Enter your PhD college name" />
+
+                <label for="phd-course">Course Name:</label>
+                <input type="text" id="phd-course" placeholder="Enter your PhD course name" />
+            </fieldset>
+
+            <fieldset>
+                <legend>Skills</legend>
+                <input type="text" id="skill" placeholder="Enter a skill" />
+                <button type="button" onclick="addSkill()">Add Skill</button>
+                <ul id="skills-list"></ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>Courses</legend>
+                <input type="text" id="course" placeholder="Enter a course" />
+                <button type="button" onclick="addCourse()">Add Course</button>
+                <ul id="courses-list"></ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>Internships</legend>
+                <input type="text" id="internship" placeholder="Enter an internship" />
+                <button type="button" onclick="addInternship()">Add Internship</button>
+                <ul id="internships-list"></ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>Work Experiences</legend>
+                <input type="text" id="job" placeholder="Enter a job experience" />
+                <button type="button" onclick="addJob()">Add Job</button>
+                <ul id="jobs-list"></ul>
+            </fieldset>
+
+            <fieldset>
+                <legend>Social Media</legend>
+                <label for="linkedin">LinkedIn:</label>
+                <input type="url" id="linkedin" placeholder="https://www.linkedin.com/in/your-full-profile-link-here" />
+
+                <label for="github">GitHub:</label>
+                <input type="url" id="github" placeholder="https://www.github.com/your-username-here" />
+
+                <label for="instagram">Instagram:</label>
+                <input type="url" id="instagram" placeholder="https://www.instagram.com/your-username-here" />
+
+                <label for="facebook">Facebook:</label>
+                <input type="url" id="facebook" placeholder="https://www.facebook.com/your-profile-link-here" />
+
+                <label for="twitter">Twitter:</label>
+                <input type="url" id="twitter" placeholder="https://www.twitter.com/your-username-here" />
+            </fieldset>
+
+            <button type="submit">Save Profile</button>
+            <p id="message"></p>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('profile-pic-preview');
+            const overlayText = document.getElementById('overlay-text');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            overlayText.textContent = '';
+        }
+
+        function addSkill() {
+            const skillInput = document.getElementById('skill');
+            const skillsList = document.getElementById('skills-list');
+            if (skillInput.value) {
+                const li = document.createElement('li');
+                li.textContent = skillInput.value;
+                skillsList.appendChild(li);
+                skillInput.value = '';
+            }
+        }
+
+        function addCourse() {
+            const courseInput = document.getElementById('course');
+            const coursesList = document.getElementById('courses-list');
+            if (courseInput.value) {
+                const li = document.createElement('li');
+                li.textContent = courseInput.value;
+                coursesList.appendChild(li);
+                courseInput.value = '';
+            }
+        }
+
+        function addInternship() {
+            const internshipInput = document.getElementById('internship');
+            const internshipsList = document.getElementById('internships-list');
+            if (internshipInput.value) {
+                const li = document.createElement('li');
+                li.textContent = internshipInput.value;
+                internshipsList.appendChild(li);
+                internshipInput.value = '';
+            }
+        }
+
+        function addJob() {
+            const jobInput = document.getElementById('job');
+            const jobsList = document.getElementById('jobs-list');
+            if (jobInput.value) {
+                const li = document.createElement('li');
+                li.textContent = jobInput.value;
+                jobsList.appendChild(li);
+                jobInput.value = '';
+            }
+        }
+
+        document.getElementById('profile-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('message').textContent = 'Profile saved successfully!';
+        });
+    </script>
+</body>
+</html>
