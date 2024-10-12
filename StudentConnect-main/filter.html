@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Search and Filter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #7bc1ed, #bbd1f8);
+            color: #fff;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            color: #0c0b0b;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        .input-container {
+            position: relative;
+            width: 100%;
+        }
+        .input-container input,
+        .input-container select {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #060606;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .input-container input::placeholder {
+            color: #837e7e;
+        }
+        .input-container input:focus,
+        .input-container select:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0c45f1;
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .form-group button:hover {
+            background-color: #2b80ff;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Search Profiles</h1>
+    <form>
+        <div class="form-group">
+            <label for="search">Search by keyword:</label>
+            <div class="input-container">
+                <input type="text" id="search" placeholder="Enter skills, projects, etc." required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <div class="input-container">
+                <select id="department">
+                    <option value="">Select Department</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="business">Business</option>
+                    <option value="arts">Arts</option>
+                    <option value="engineering">Engineering</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="year">Graduation Year:</label>
+            <div class="input-container">
+                <select id="year">
+                    <option value="">Select Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <div class="input-container">
+                <select id="skills">
+                    <option value="">Select Skills</option>
+                    <option value="python">Python</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="data-analysis">Data Analysis</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

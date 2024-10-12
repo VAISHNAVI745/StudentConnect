@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7bc1ed, #bbd1f8);
+            color: #fff;
+            margin: 0;
+            position: relative; /* Added for positioning */
+        }
+
+        header {
+            position: relative; /* Added for positioning the back button */
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        h1, h3 {
+            margin: 20px 0;
+            font-size: 28px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #0c45f1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #2b80ff;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+        }
+
+        .profile-info {
+            text-align: center;
+        }
+
+        .profile-info img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ddd;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .section div {
+            background-color: white;
+            color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #0c45f1;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0c45f1;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2b80ff;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Spacing between buttons */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <i class="fas fa-arrow-left back-arrow" onclick="goToHomepage()"></i>
+        <h1>Profile </h1>
+        <nav>
+            <ul>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#work-experience">Work Experience</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container profile-info">
+            <img id="profile-picture" src="https://placehold.co/160x160" alt="Profile Picture">
+            <h2>[Your Profession]</h2>
+            <p>[Your Short Title or Role]</p>
+            
+            <!-- Button Container -->
+            <div class="btn-container">
+                <!-- Follow Button -->
+                <button id="followBtn" class="btn">Follow</button>
+                <!-- Message Button -->
+                <a href="message.html" class="btn">Message</a>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section form-container">
+            <h3>Skills</h3>
+            <div>
+                <ul class="list-disc list-inside">
+                    <!-- Add skills here -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Internships Section -->
+        <section id="internships" class="section form-container">
+            <h3>Internships</h3>
+            <div>
+                <ul class="list-disc list-inside">
+                    <!-- Add internships here -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="work-experience" class="section form-container">
+            <h3>Work Experience</h3>
+            <div>
+                <ul class="list-disc list-inside">
+                    <!-- Add work experience here -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section form-container">
+            <h3>Blog</h3>
+            <div>
+                <ul class="list-disc list-inside">
+                    <!-- Add blog posts here -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Section -->
+    <footer id="contact" class="form-container">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:youremail@example.com">youremail@somaiya.edu</a></p>
+    </footer>
+
+    <script>
+        // Follow Button Functionality
+        const followBtn = document.getElementById('followBtn');
+        let isFollowing = false;
+
+        followBtn.addEventListener('click', function() {
+            isFollowing = !isFollowing; // Toggle the following state
+            followBtn.textContent = isFollowing ? 'Following' : 'Follow'; // Update button text
+        });
+
+        // Back Button Functionality
+        function goToHomepage() {
+            window.location.href = 'homepage.html'; // Navigate to homepage.html
+        }
+    </script>
+</body>
+
+</html>

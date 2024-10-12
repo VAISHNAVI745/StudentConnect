@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect</title>
+
+    <!-- Add Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #7bc1ed, #bbd1f8);
+            color: #fff;
+            overflow: hidden; /* Prevent scrolling when modal is open */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header button {
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .header button:hover {
+            color: #2b80ff;
+        }
+
+        .profile-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            color: #0c0b0b;
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            width: 80%; /* Increase width of the search bar */
+            max-width: 800px; /* Maximum width for larger screens */
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            padding-right: 40px; /* Add padding to make space for the icon */
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #060606;
+            font-size: 14px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: #837e7e;
+        }
+
+        .search-bar input:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Magnifying glass icon */
+        .search-bar i {
+            position: absolute;
+            right: 10px;
+            color: #837e7e;
+        }
+
+        .header-middle {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: -400px; /* Slide-in effect from the left */
+            width: 400px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Align items to space the content */
+        }
+
+        .modal.open {
+            left: 0; /* Open position on the left */
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .modal-profile-photo {
+            width: 80px; /* Adjust size as needed */
+            height: 80px; /* Adjust size as needed */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px; /* Space between photo and title */
+        }
+
+        .user-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333; /* Change text color as needed */
+        }
+
+        .user-name-container {
+            display: flex;
+            align-items: center; /* Align items vertically */
+            margin-top: 10px; /* Space between header and name */
+        }
+
+        /* Option list */
+        .option-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-list div {
+            font-size: 25px;
+            color: #08080a;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .option-list div:hover {
+            color: #2b80ff;
+        }
+
+        /* Sub-option styles */
+        .sub-option-list {
+            display: none; /* Hidden by default */
+            margin-left: 20px; /* Indent for sub-options */
+            flex-direction: column;
+        }
+
+        /* Edit Profile button style */
+        .edit-profile-button {
+            padding: 10px 20px;
+            background-color: #0c45f1;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .edit-profile-button:hover {
+            background-color: #2b80ff;
+        }
+
+        /* Settings at the bottom */
+        .settings {
+            margin-top: auto; /* Push it to the bottom */
+            font-size: 25px;
+            color: #08080a;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center; /* Center items vertically */
+        }
+
+        .settings:hover {
+            color: #2b80ff;
+        }
+
+        .settings-icon {
+            margin-right: 10px; /* Space between icon and text */
+            font-size: 20px; /* Adjust icon size */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- Profile photo inside a button on the left -->
+        <div class="header-left">
+            <button onclick="toggleModal()">
+                <img src="https://via.placeholder.com/50" alt="Profile Photo" class="profile-photo">
+            </button>
+        </div>
+
+        <!-- Centered search bar -->
+        <div class="header-middle">
+            <div class="search-bar">
+                <input type="text" placeholder="Search..." onclick="openSearchPage()">
+                <i class="fas fa-search"></i> <!-- Magnifying glass icon -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for profile details -->
+    <div class="modal" id="profileModal">
+        <div>
+            <div class="modal-header">
+                <img src="https://via.placeholder.com/60" alt="Profile Photo" class="modal-profile-photo">
+                <h2>Profile</h2>
+                <span class="close-modal" onclick="toggleModal()">&times;</span>
+            </div>
+            <div class="user-name-container">
+                <p class="user-name">John Doe</p> <!-- User name added here -->
+            </div>
+
+            <!-- Edit Profile button -->
+            <div class="edit-profile-button" onclick="editProfile()"> Profile</div>
+
+           
+
+        <!-- Settings button at the bottom -->
+        <div class="settings" onclick="settings()">
+            <i class="fas fa-cog settings-icon"></i>
+            Settings
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle the modal
+        function toggleModal() {
+            const modal = document.getElementById('profileModal');
+            modal.classList.toggle('open');
+        }
+
+        // Function to open a new blank page when the search bar is clicked
+        function openSearchPage() {
+            // Open a new tab with a blank page or a specific URL
+            window.open('search.html', '_blank'); // Replace 'your-search-page.html' with your desired URL
+        }
+
+        // Define the missing JavaScript functions
+        function editProfile() {
+            console.log("Edit Profile button clicked");
+            // Redirect to edit profile page if needed
+            window.location.href = 'userviewprofile.html'; // Change this to your edit profile page
+        }
+
+        function savedPosts() {
+            console.log("Create Post button clicked");
+            // Redirect to saved posts page
+            window.location.href = 'createpost.html'; // Change this to your saved posts page
+        }
+
+        function toggleBlogOptions() {
+            const blogOptions = document.getElementById('blogOptions');
+            // Toggle visibility of blog options
+            if (blogOptions.style.display === 'flex') {
+                blogOptions.style.display = 'none'; // Hide if currently visible
+            } else {
+                blogOptions.style.display = 'flex'; // Show if currently hidden
+            }
+        }
+
+        function readBlog() {
+            console.log("Read Blog clicked");
+            window.location.href = 'readBlog.html'; // Change this to your read blog page
+        }
+
+        function writeBlog() {
+            console.log("Write Blog clicked");
+            window.location.href = 'writeBlog.html'; // Change this to your write blog page
+        }
+
+        function settings() {
+            console.log("Settings button clicked");
+            // Redirect to settings page
+            window.location.href = 'settings.html'; // Change this to your settings page
+        }
+    </script>
+</body>
+</html>
