@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7bc1ed,  #bbd1f8);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .post-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 650px;
+            min-height: 400px;
+            display: flex; /* Flex container */
+            flex-direction: column; /* Stack children vertically */
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .post-privacy {
+            font-size: 12px;
+            color: #65676b;
+        }
+
+        .post-text {
+            flex-grow: 1; /* Allow to grow and fill space */
+            padding: 15px;
+        }
+
+        .post-input {
+            width: 100%;
+            height: 200px;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 16px;
+            padding: 1px;
+        }
+
+        .post-actions {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .action-icon {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #65676b;
+            cursor: pointer;
+        }
+
+        .post-button {
+            background-color: #0c45f1;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: auto; /* Align button to the right */
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <div class="post-header">
+            <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="user-info">
+                <div class="user-name">Your Name </div>
+                <div class="post-privacy">Post to Anyone</div>
+            </div>
+        </div>
+        <div class="post-text">
+            <textarea class="post-input" placeholder="What do you want to talk about?"></textarea>
+        </div>
+        <div class="post-actions">
+            <span class="action-icon">&#128512;</span>
+
+            <span class="action-icon">&#127916;</span>
+            
+            <button class="post-button">Post</button>
+        </div>
+    </div>
+</body>
+</html>
